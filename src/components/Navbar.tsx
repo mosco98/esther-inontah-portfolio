@@ -1,11 +1,29 @@
 "use client"
 
+import { cn } from "@/lib/utils"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import Logo from "./Logo"
 import { Button } from "./ui/button"
 
 const Navbar = () => {
   //TODO: add shadow on scroll
+  const pathname = usePathname()
+
+  const setActiveLink = (href: string): string => {
+    if (href === "/") {
+      if (href === pathname) {
+        return "font-semibold"
+      }
+    } else {
+      if (pathname.startsWith(href)) {
+        return "font-semibold"
+      }
+    }
+
+    return ""
+  }
+
   return (
     <nav className="fixed top-0 bg-white w-full z-50">
       <div className="container py-8 flex items-center justify-between">
@@ -14,19 +32,37 @@ const Navbar = () => {
         </Link>
 
         <div className="flex items-center gap-9">
-          <Link href={"/"} className="font-semibold">
+          <Link
+            href={"/"}
+            className={cn(
+              setActiveLink("/"),
+              "hover:opacity-70 transition-all duration-200 ease-in-out"
+            )}
+          >
             <p>Work</p>
           </Link>
 
-          <Link href={"/"}>
+          <Link
+            href={"/about"}
+            className={cn(
+              setActiveLink("/about"),
+              "hover:opacity-70 transition-all duration-200 ease-in-out"
+            )}
+          >
             <p>About</p>
           </Link>
 
-          <Link href={"/"}>
+          <Link
+            href={"/playground"}
+            className={cn(
+              setActiveLink("/playground"),
+              "hover:opacity-70 transition-all duration-200 ease-in-out"
+            )}
+          >
             <p>Playground</p>
           </Link>
 
-          <Link href={"/"} className="flex items-center gap-1">
+          <span className="flex items-center gap-1 cursor-pointer">
             <p>Resume</p>
 
             <svg
@@ -44,7 +80,7 @@ const Navbar = () => {
                 strokeLinejoin="round"
               />
             </svg>
-          </Link>
+          </span>
         </div>
 
         <div>

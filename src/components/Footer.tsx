@@ -1,5 +1,7 @@
 "use client"
 
+import Link from "next/link"
+
 const Footer = () => {
   return (
     <footer className="border-t-[0.3px] border-[#D0D5DD] pt-24 pb-16">
@@ -22,9 +24,15 @@ const Footer = () => {
               <span className="text-xs font-medium text-[#667085]">MAIN</span>
 
               <ul className="space-y-4 [&_li]:font-semibold [&_li]:text-sm mt-3">
-                <li>Work</li>
-                <li>About</li>
-                <li>Playground</li>
+                <li>
+                  <Link href={"/"}>Work</Link>
+                </li>
+                <li>
+                  <Link href={"/about"}>About</Link>
+                </li>
+                <li>
+                  <Link href={"/playground"}>Playground</Link>
+                </li>
               </ul>
             </div>
 
@@ -53,42 +61,54 @@ const Footer = () => {
                   </svg>
                 </li>
 
-                <li className="flex items-center gap-1">
-                  Linkedin{" "}
-                  <svg
-                    width={16}
-                    height={16}
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/estherinontah/"
+                    className="flex items-center gap-1"
+                    target="_blank"
                   >
-                    <path
-                      d="M4 12L12 4M12 4H6.66667M12 4V9.33333"
-                      stroke="black"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                    Linkedin{" "}
+                    <svg
+                      width={16}
+                      height={16}
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 12L12 4M12 4H6.66667M12 4V9.33333"
+                        stroke="black"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </a>
                 </li>
 
-                <li className="flex items-center gap-1">
-                  Twitter{" "}
-                  <svg
-                    width={16}
-                    height={16}
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                <li>
+                  <a
+                    href="https://twitter.com/estherinontah_"
+                    className="flex items-center gap-1"
+                    target="_blank"
                   >
-                    <path
-                      d="M4 12L12 4M12 4H6.66667M12 4V9.33333"
-                      stroke="black"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                    Twitter{" "}
+                    <svg
+                      width={16}
+                      height={16}
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 12L12 4M12 4H6.66667M12 4V9.33333"
+                        stroke="black"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </a>
                 </li>
               </ul>
             </div>
