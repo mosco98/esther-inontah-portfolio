@@ -1,6 +1,7 @@
 "use client"
 
-import { Button } from "./ui/button"
+import Link from "next/link"
+import { Button, buttonVariants } from "./ui/button"
 
 const Hero = () => {
   return (
@@ -51,7 +52,13 @@ const Hero = () => {
       </p>
 
       <div className="mt-10 flex items-center justify-center gap-10">
-        <Button className="gap-1 font-semibold" variant={"secondary"}>
+        <Link
+          href={"#selectedstudies"}
+          className={buttonVariants({
+            variant: "secondary",
+            className: "gap-1 font-semibold"
+          })}
+        >
           Selected case studies{" "}
           <svg
             width={21}
@@ -68,7 +75,7 @@ const Hero = () => {
               strokeLinejoin="round"
             />
           </svg>
-        </Button>
+        </Link>
 
         <Button
           className="text-[#98A2B3] gap-1 font-semibold group"

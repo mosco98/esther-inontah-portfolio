@@ -19,7 +19,10 @@ const PlaygroundPage = () => {
         </div>
       </Section>
 
-      <section className="grid grid-cols-2 gap-12 container">
+      <section
+        className="grid grid-cols-2 gap-12 container"
+        id="selectedstudies"
+      >
         <div className="h-[592px] bg-[#98A2B3] rounded-[20px] p-4"></div>
         <div className="h-[592px] bg-[#98A2B3] rounded-[20px] p-4"></div>
         <div className="h-[592px] bg-[#98A2B3] rounded-[20px] p-4"></div>
