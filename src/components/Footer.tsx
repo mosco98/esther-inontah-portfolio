@@ -117,7 +117,7 @@ const Footer = () => {
 
         <div className="mt-24 text-center">
           <p className="font-medium">
-            ©2023 Esther Inontah. All Rights Reserved
+            ©{new Date().getFullYear()} Esther Inontah. All Rights Reserved
           </p>
 
           <span className="mt-1 text-sm text-[#475467]">
