@@ -2,8 +2,35 @@
 "use client"
 
 import Section from "@/components/Section"
+import { AnimatePresence, motion } from "framer-motion"
+import Image from "next/image"
+import { useEffect, useState } from "react"
+
+const images = [
+  "https://images.unsplash.com/photo-1664575602554-2087b04935a5?auto=format&fit=crop&q=60&w=800&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d29tYW58ZW58MHx8MHx8fDA%3D",
+  "https://images.unsplash.com/photo-1664575600397-88e370cb46b8?auto=format&fit=crop&q=60&w=800&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHdvbWFufGVufDB8fDB8fHww",
+  "https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?auto=format&fit=crop&q=60&w=800&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHdvbWFufGVufDB8fDB8fHww",
+  "https://images.unsplash.com/photo-1665686304312-16e3a16be0ed?auto=format&fit=crop&q=60&w=800&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fHdvbWFufGVufDB8fDB8fHww",
+  "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&q=60&w=800&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fHdvbWFufGVufDB8fDB8fHww",
+  "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=60&w=800&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fHdvbWFufGVufDB8fDB8fHww",
+  "https://images.unsplash.com/photo-1557555187-23d685287bc3?auto=format&fit=crop&q=60&w=800&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjJ8fHdvbWFufGVufDB8fDB8fHww"
+]
 
 const AboutPage = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0)
+
+  useEffect(() => {
+    const nextImage = () => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
+    }
+
+    const interval = setInterval(nextImage, 7000)
+
+    return () => {
+      clearInterval(interval)
+    }
+  }, [])
+
   return (
     <>
       <Section className="container grid grid-cols-3 gap-8">
@@ -50,15 +77,30 @@ const AboutPage = () => {
           </div>
         </div>
 
-        <div className="bg-red-500 h-full rounded-[10px] overflow-hidden">
-          1
+        <div className="h-full rounded-[10px] overflow-hidden relative bg-[#D0D5DD]/0.3">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={currentImageIndex}
+              src={images[currentImageIndex]}
+              alt="Slider Image"
+              initial={{ x: "100%" }}
+              animate={{ x: "0" }}
+              exit={{ x: "-100%" }}
+              transition={{ duration: 0.15 }}
+              className="h-full w-full object-cover absolute"
+            />
+          </AnimatePresence>
         </div>
       </Section>
 
       <Section className="container grid grid-cols-2">
         <div className="py-14">
-          <div className="bg-red-500 max-w-[400px] h-full rounded-[10px] overflow-hidden">
-            Hello
+          <div className="max-w-[400px] h-full rounded-[10px] overflow-hidden relative">
+            <Image
+              src="https://images.unsplash.com/photo-1664575602554-2087b04935a5?auto=format&fit=crop&q=60&w=800&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d29tYW58ZW58MHx8MHx8fDA%3D"
+              alt=""
+              fill
+            />
           </div>
         </div>
 
@@ -158,17 +200,65 @@ const AboutPage = () => {
         </div>
 
         <div className="mt-14 grid grid-cols-4 gap-3">
-          <div className="h-[331px] bg-red-500 rounded-[8px] p-3 border-[0.5px] border-[#D0D5DD] shadow-lg">
-            1
+          <div className="min-h-[331px] about-card p-4 border-[0.5px] border-[#D0D5DD] rounded-[8px] overflow-hidden">
+            <div className="h-[175px] bg-green-500 rounded-[4px]"></div>
+
+            <div className="mt-6">
+              <span className="text-[18px] font-semibold">User research</span>
+
+              <p className="mt-2 text-sm text-[#1D2939]">
+                I am all about putting the user first. Before designing a
+                solution, I first dive into user research, then create UX
+                artefacts that helps me empathise with users & understand their
+                core needs.
+              </p>
+            </div>
           </div>
-          <div className="h-[331px] bg-red-500 rounded-[8px] p-3 border-[0.5px] border-[#D0D5DD] shadow-lg">
-            1
+
+          <div className="min-h-[331px] about-card p-4 border-[0.5px] border-[#D0D5DD] rounded-[8px] overflow-hidden">
+            <div className="h-[175px] bg-green-500 rounded-[4px]"></div>
+
+            <div className="mt-6">
+              <span className="text-[18px] font-semibold">UI/UX design</span>
+
+              <p className="mt-2 text-sm text-[#1D2939]">
+                I've got a knack for making things look stunning and work
+                seamlessly. It's not just about pretty visuals; it's about
+                creating an appealing experience that users will love.
+              </p>
+            </div>
           </div>
-          <div className="h-[331px] bg-red-500 rounded-[8px] p-3 border-[0.5px] border-[#D0D5DD] shadow-lg">
-            1
+
+          <div className="min-h-[331px] about-card p-4 border-[0.5px] border-[#D0D5DD] rounded-[8px] overflow-hidden">
+            <div className="h-[175px] bg-green-500 rounded-[4px]"></div>
+
+            <div className="mt-6">
+              <span className="text-[18px] font-semibold">
+                Interaction design
+              </span>
+
+              <p className="mt-2 text-sm text-[#1D2939]">
+                When designing, I add those little animations and interactions
+                that make a website or app feel alive. It's like giving a
+                digital product a personality!
+              </p>
+            </div>
           </div>
-          <div className="h-[331px] bg-red-500 rounded-[8px] p-3 border-[0.5px] border-[#D0D5DD] shadow-lg">
-            1
+
+          <div className="min-h-[331px] about-card p-4 border-[0.5px] border-[#D0D5DD] rounded-[8px] overflow-hidden">
+            <div className="h-[175px] bg-green-500 rounded-[4px]"></div>
+
+            <div className="mt-6">
+              <span className="text-[18px] font-semibold">
+                Responsive design
+              </span>
+
+              <p className="mt-2 text-sm text-[#1D2939]">
+                Responsiveness is literally a MUST! I ensure my designs work
+                seamlessly on all devices – from big screens to tiny
+                smartphones.
+              </p>
+            </div>
           </div>
         </div>
       </Section>
